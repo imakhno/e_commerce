@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключение файла со стилями -->
+    <link th:replace="~{fragments/styles :: style}" />
+
+
+    <title>Каталог товаров | imakhno</title>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--  Подключение шапки  -->
+    <header class="header" th:insert="~{fragments/header :: header}"></header>
+
+    <main class="main"></main>
+
+    <footer class="footer">footer</footer>
+</div>
+
+<!-- Подключение скриптов -->
+<script th:replace="~{fragments/scripts :: script}"></script>
+</body>
+</html>

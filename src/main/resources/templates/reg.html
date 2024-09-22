@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:replace="~{fragments/styles :: style}"/>
+    <title>Login</title>
+</head>
+<body>
+<div class="wrapper">
+    <!--  Подключение шапки  -->
+    <header class="header" th:insert="~{fragments/header :: header}"></header>
+
+    <main class="main main__page">
+        <div class="container">
+            <div class="wrapper-main">
+                <h2 class="page__title">Регистрация</h2>
+                <div class="register__page">
+
+                    <form action="/register" method="post">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required><br><br>
+
+                        <label for="surname">Фамилия:</label>
+                        <input type="text" id="surname" name="surname" required><br><br>
+
+                        <label for="username">Email (в качестве username):</label>
+                        <input type="email" id="username" name="username" required><br><br>
+
+                        <label for="phone">Телефон:</label>
+                        <input type="text" id="phone" name="phone" required><br><br>
+
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required><br><br>
+
+                        <button type="submit">Зарегистрироваться</button>
+                    </form>
+                    <!-- Отображение ошибки, если она есть -->
+                    <div th:if="${errorMessage}" class="error-message">
+                        <p th:text="${errorMessage}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">footer</footer>
+</div>
+</body>
+</html>

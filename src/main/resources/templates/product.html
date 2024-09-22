@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключение файла со стилями -->
+    <link th:replace="~{fragments/styles :: style}"/>
+
+
+    <title data-th-text="${product.name} + ' | imakhno store'"></title>
+</head>
+<body>
+<!--  Подключение шапки  -->
+<div class="wrapper">
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main class="main main__page">
+        <div class="container">
+            <form class="main__wrapper">
+                <h2 class="category__title" th:text="${category.name}"></h2>
+                <a class="back__to-category" data-th-href="${'/categories/' + category.id}">Вернуться к товарам</a>
+                <div class="product__block">
+                    <div class="product__block-slider">
+                        <!--   main slider    -->
+                        <div class="product__images card__images-slider">
+                            <div class="slider__img" th:each="imageId : ${imageIds}">
+                                <img th:src="@{'/images/' + ${imageId}}" th:alt="'Image of ' + ${product.name} "/>
+                            </div>
+                        </div>
+                        <!--   nav slider for main slider    -->
+                        <div class="product__images card__images-slider-nav">
+                            <div class="card__img-nav nav__img-mini" th:each="imageId : ${imageIds}">
+                                <img th:src="@{'/images/' + ${imageId}}" th:alt="'Image of ' + ${product.name} "/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__block-info">
+                        <h3 class="product__block-info-name" data-th-text="${product.name}"></h3>
+                        <p class="product__block-info-details" data-th-text="${product.details}"></p>
+                        <form method="get"
+                              th:action="
+                              @{/categories/
+                              ${category.id}
+                              /${product.id}?color_id=${colorId}&size_id=${sizeId}}"
+                              class="product__block-info-option">
+
+                            <div class="wrapper-select">
+                                <label class="block__info-option">Выберите размер: </label>
+                                <select class="info__option-select" name="sizes" id="sizes">
+                                    <th:block th:each="size : ${sizesList}">
+                                        <option th:value="${size.id}" th:text="${size.name}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                            <div class="wrapper-select">
+                                <label class="block__info-option">Выберите цвет: </label>
+                                <select class="info__option-select" name="colors" id="colors">
+                                    <th:block th:each="color : ${colorList}">
+                                        <option th:value="${color.id}" th:text="${color.name}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+
+
+                            <!-- Скрытые элементы для хранения значений -->
+                            <input type="hidden" id="categoryIdUrl" th:value="${category.id}">
+                            <input type="hidden" id="productIdUrl" th:value="${product.id}">
+                        </form>
+                    </div>
+                    <div class="product__block-toCart">
+                        <div class="block__toCart-wrapper">
+                            <div class="toCart__price">
+                                <div class="toCart__price-top">
+                                    <p class="toCart__price-old price-product">
+                                        <span id="oldPrice"></span>
+                                    </p>
+                                    <p class="toCart__price-current price-product">
+                                        <span id="price"></span>
+                                    </p>
+                                    <p id="for-stock" class="toCart__price-isExists"></p>
+                                </div>
+                                <div class="toCart__price-bottom">
+                                    <button id="btn-toCart" class="toCart__price-buy">
+                                        <img src="/images/icons/basket_2.png" alt="cart">
+                                        КУПИТЬ
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="toCart__info">
+                                <div class="toCart__info-point">
+                                    <img src="/images/icons/1_1.png" alt="" class="info__point-img">
+                                    <div class="info__point-description">
+                                        <p class="info__point-title">Бесплатная доставка</p>
+                                        <span class="info__point-details">по всей России</span>
+                                    </div>
+                                </div>
+                                <div class="toCart__info-point">
+                                    <img src="/images/icons/2_2.png" alt="" class="info__point-img">
+                                    <div class="info__point-description">
+                                        <p class="info__point-title">Горячая линия</p>
+                                        <span class="info__point-details">8-800-000-00-00</span>
+                                    </div>
+                                </div>
+                                <div class="toCart__info-point">
+                                    <img src="/images/icons/3_3.png" alt="" class="info__point-img">
+                                    <div class="info__point-description">
+                                        <p class="info__point-title">Подарки</p>
+                                        <span class="info__point-details">каждому покупателю</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">footer</footer>
+
+</div>
+
+<!-- Подключение скриптов -->
+<script th:replace="~{fragments/scripts :: script}"></script>
+</body>
+</html>

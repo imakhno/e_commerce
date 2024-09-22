@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Подключение файла со стилями -->
+    <link th:replace="~{fragments/styles :: style}"/>
+
+
+    <title data-th-text="#{'error.404.title'} + ' | imakhno'"></title>
+
+
+</head>
+<body>
+<div class="wrapper">
+
+    <!--  Подключение шапки  -->
+    <header class="header" th:insert="~{fragments/header :: header}"></header>
+
+    <main class="main">
+        <div class="container">
+            <div class="wrapper-error">
+                <p class="error-title" data-th-text="#{'error.404.header'}"></p>
+                <h2 class="error-description" th:if="${error == 'Not Found'}" th:text="'Страница не найдена.'"></h2>
+                <h2 class="error-description" th:unless="${error == 'Not Found'}" th:text="${error}"></h2>
+                <a class="error-backToIndex" data-th-href="@{'/'}" }>&larr; На главную</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">footer</footer>
+</div>
+
+<!-- Подключение скриптов -->
+<script th:replace="~{fragments/scripts :: script}"></script>
+</body>
+</html>

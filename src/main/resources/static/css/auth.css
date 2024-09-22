@@ -1,0 +1,83 @@
+.login__page {
+    width: 100%;
+    height: 385px;
+    background-color: white;
+    box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
+    margin: 18px 0;
+    display: flex;
+}
+
+.to-register,
+.login__form {
+    width: 520px;
+    height: 100%;
+    padding: 30px;
+}
+
+.login__form {
+    border-right: 1px solid #f6f6f6;
+}
+
+.to-register {
+    border-left: 1px solid #f6f6f6;
+}
+
+.form__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.name__input {
+    font-size: 14px;
+    color: #999999;
+}
+
+.input__email,
+.input__password {
+    width: 100%;
+    height: 50px;
+    background-color: #e9e9e9;
+    margin: 12px 0 20px;
+    color: black;
+    text-indent: 18px;
+    font-size: 16px;
+}
+
+.form__button {
+    width: 97px;
+    height: 43px;
+    font-size: 18px;
+    border: 5px solid #ed1651;
+}
+
+.forgot__password {
+    color: #ed1651;
+    text-decoration: underline;
+    margin-left: 33px;
+}
+
+.button__register {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 220px;
+    height: 47px;
+    background-color: #ed1651;
+    color: white;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    border: 3px solid #ed1651;
+}
+
+.button__register:hover {
+    color: #ed1651;
+    background-color: white;
+
+}
+
+
+
+
+

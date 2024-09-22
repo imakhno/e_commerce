@@ -1,0 +1,48 @@
+<header class="header" th:fragment="header">
+    <div class="header__container">
+        <a href="/" class="header__logo"><img src="" alt=""></a>
+        <div class="header__menu menu">
+            <div class="menu__icon icon-menu"><span></span></div>
+            <nav class="menu__body">
+                <ul class="menu__list">
+                    <li data-th-each="category : ${categories}" class="menu__item">
+                        <a data-th-target="_blank"
+                           class="menu__link"
+                           data-th-href="${'/categories/' + category.id}"
+                           data-th-text="${category.name}"
+                        ></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header__menu-user">
+                <!-- Блок для неаутентифицированных пользователей -->
+                <div th:if="${user == null}">
+                    <div class="user-block menu__user-auth">
+                        <a class="user__account" href="/auth">
+                            <img class="user__account-icon" src="/images/icons/pol.png"/>
+                            <span>Войти</span>
+                        </a>
+                    </div>
+                    <a href="/reg" class="user-block menu__user-register">
+                        <span>Регистрация</span>
+                    </a>
+                </div>
+
+                <!-- Блок для аутентифицированных пользователей -->
+                <div th:if="${user != null}">
+                    <div class="user-block menu__user-cart">
+                        <a class="user__account" href="/account">
+                            <img class="user__account-icon" src="/images/icons/pol.png"/>
+                        </a>
+                        <span class="cart-count">3</span>
+                        <a class="user__account-cart" href="/cart">
+                            <img class="user__cart-icon" src="/images/icons/basket.png"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

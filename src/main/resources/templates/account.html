@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:replace="~{fragments/styles :: style}"/>
+    <title th:text="'Личный кабинет | ' + ${user.name}"></title>
+</head>
+<body>
+<div class="wrapper">
+
+    <!--  Подключение шапки  -->
+    <header class="header" th:insert="~{fragments/header :: header}"></header>
+
+    <main class="main main__page">
+        <div class="container">
+            <div class="wrapper-main">
+                <h2 class="page__title">Личный кабинет</h2>
+                <div class="account__page">
+                    <div class="account__data">
+                        <div class="person__data">
+                            <h2 class="person__data-title">Ваши данные</h2>
+                            <div class="person__data-info">
+                                <div>
+                                    <label class="name-input" for="name">Имя:</label>
+                                    <input class="person__name"
+                                           type="text"
+                                           id="name"
+                                           name="name"
+                                           th:value="${user.name}">
+                                </div>
+                                <div>
+                                    <label class="surname-input" for="name">Фамилия:</label>
+                                    <input
+                                            class="person__surname"
+                                            type="text"
+                                            id="surname"
+                                            name="surname"
+                                            th:value="${user.surname}">
+                                </div>
+                                <div>
+                                    <label class="email-input" for="name">Email:</label>
+                                    <input
+                                            class="person__email"
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            th:value="${user.username}" disabled>
+                                </div>
+                                <div>
+                                    <label class="phone-input" for="name">Телефон:</label>
+                                    <input
+                                            class="person__phone"
+                                            type="text"
+                                            id="phone"
+                                            name="phone"
+                                            th:value="${user.phone}">
+                                </div>
+                            </div>
+                        </div>
+                        <form action="/updateAccountInfo" method="post" class="person__address">
+                            <h2 class="person__address-title">Адрес доставки</h2>
+                            <input type="hidden" name="username" th:value="${user.username}">
+                            <div class="person__address-info">
+                                <div>
+                                    <label class="city-input" for="city">Город:</label>
+                                    <input
+                                            class="person__city"
+                                            type="text"
+                                            id="city"
+                                            name="city"
+                                            th:value="${#strings.isEmpty(user.city) ? '' : user.city}">
+                                </div>
+                                <div>
+                                    <label class="street-input" for="street">Улица:</label>
+                                    <input
+                                            class="person__street"
+                                            type="text"
+                                            id="street"
+                                            name="street"
+                                            th:value="${#strings.isEmpty(user.street) ? '' : user.street}">
+                                </div>
+                                <div class="apartment-info">
+                                    <div>
+                                        <label class="house-input" for="name">Дом:</label>
+                                        <input
+                                                class="person__house"
+                                                type="text"
+                                                id="house"
+                                                name="house"
+                                                th:value="${#strings.isEmpty(user.house) ? '' : user.house}">
+                                    </div>
+                                    <div>
+                                        <label class="apartment-input" for="name">Квартира:</label>
+                                        <input
+                                                class="person__apartment"
+                                                type="text"
+                                                id="apartment"
+                                                name="apartment"
+                                                th:value="${#strings.isEmpty(user.apartment) ? '' : user.apartment}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-button">
+                                <button class="person__info-update" type="submit">Обновить данные</button>
+                                <a href="/logout" class="person__info-logout" type="submit">Выход</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="person__orders">
+                        <h2 class="person__orders-title">Ваши заказы</h2>
+                        <div class="person__orders-info">
+                            <div class="order__info">
+                                <div class="order__info-details">
+                                    <p class="order-number">№41322</p>
+                                    <p class="order-price">(55 555руб.)</p>
+                                    <p class="order-date">12.12.2024 в 22:22</p>
+                                </div>
+                                <div class="order__info-status">
+                                    <p>Ожидает доставки</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order__info">
+                            <div class="order__info-details">
+                                <p class="order-number">№42322</p>
+                                <p class="order-price">(55 555руб.)</p>
+                                <p class="order-date">12.12.2024 в 22:22</p>
+                            </div>
+                            <div class="order__info-status">
+                                <p>Доставлен</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">footer</footer>
+</div>
+</body>
+</html>

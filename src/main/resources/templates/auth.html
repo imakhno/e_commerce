@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:replace="~{fragments/styles :: style}"/>
+    <title>Login</title>
+</head>
+<body>
+<div class="wrapper">
+    <!--  Подключение шапки  -->
+    <header class="header" th:insert="~{fragments/header :: header}"></header>
+
+    <main class="main main__page">
+        <div class="container">
+            <div class="wrapper-main">
+                <h2 class="page__title">Вход</h2>
+                <div class="login__page">
+
+                    <form class="login__form" action="/login" method="post">
+                        <h3 class="form__title">Зарегистрированный пользователь</h3>
+                        <div>
+                            <label class="name__input" for="username">Email:</label>
+                            <input class="input__email" type="text" id="username" name="username">
+                        </div>
+                        <div>
+                            <label class="name__input" for="password">Пароль:</label>
+                            <input class="input__password" type="password" id="password" name="password">
+                        </div>
+                        <div>
+                            <button class="form__button" type="submit">Войти</button>
+                        </div>
+                    </form>
+
+                    <div class="to-register">
+                        <h3 class="form__title">Новый пользователь</h3>
+                        <a class="button__register" href="/reg">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">footer</footer>
+</div>
+</body>
+</html>
